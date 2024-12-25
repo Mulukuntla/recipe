@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Management</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .recipe { border: 1px solid #ccc; padding: 10px; margin: 10px 0; }
+    .form-group { margin-bottom: 10px; }
+  </style>
+   <link rel="stylesheet" href="homePage.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+        <a href="#">Logo</a>
+    </div>
+    <div class="nav-links">
+        <a href="homePage.html">Home</a>
+        <a href="searchRecipies.html">Search</a>
+        <a href="favorites.html">Favorite</a>
+        <a href="feed.html">Feed</a>
+        <a href="profileUser.html">Profile</a>
+    </div>
+</nav>
+  <h1>Recipe Management</h1>
+  
+  <form id="recipeForm">
+    <input type="hidden" id="userId"></input>
+    <div class="form-group">
+      <label>Title: <input type="text" id="title" required></label>
+    </div>
+    <div class="form-group">
+      <label>Ingredients: <textarea id="ingredients" required></textarea></label>
+    </div>
+    <div class="form-group">
+      <label>Instructions: <textarea id="instructions" required></textarea></label>
+    </div>
+    <div class="form-group">
+        difficulty:<select id="difficulty">
+            <option value="">All</option>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+        </select>
+    </div>
+    <div class="form-group">
+      <label>Prep Time (mins): <input type="number" id="prepTime"></label>
+    </div>
+    <div class="form-group">
+      dietaryPreferences:<select id="dietaryPreferences">
+        <option value="">All</option>
+        <option value="Vegetarian">Vegetarian</option>
+        <option value="Vegan">Vegan</option>
+        <option value="Gluten-Free">Gluten-Free</option>
+      </select>
+    </div>
+    <input type="file" id="fileInput" name="file" />
+    <button type="submit" id="submitRecipe">Submit Recipe</button>
+  </form>
+   <h4>recipies</h4>
+  <div id="recipes"></div>
+  <button type="submit" onclick="searchRecipies()">searchRecipies</button>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="homePage.js"></script>
+</body>
+</html>

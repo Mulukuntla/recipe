@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Recipes and Favorites</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#">Logo</a>
+        </div>
+        <div class="nav-links">
+            <a href="homePage.html">Home</a>
+            <a href="searchRecipies.html">Search</a>
+            <a href="favorites.html">Favorite</a>
+            <a href="feed.html">Feed</a>
+            <a href="profileUser.html">Profile</a>
+        </div>
+    </nav>
+    <h1 id="name"></h1>
+    <main>
+        <section>
+            <h2>All Recipes</h2>
+            <div id="recipes-container" class="card-container"></div>
+        </section>
+        <section>
+            <h2>Favorites</h2>
+            <div id="favorites-container" class="card-container"></div>
+        </section>
+        <section>
+            <h2>Favorites in Collections</h2>
+            <div id="collections-container" class="card-container"></div>
+        </section>
+        
+    </main>
+   
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="profile.js"></script>
+</html>

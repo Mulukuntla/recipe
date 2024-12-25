@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="searchRecipies.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#">Logo</a>
+        </div>
+        <div class="nav-links">
+            <a href="homePage.html">Home</a>
+            <a href="searchRecipies.html">Search</a>
+            <a href="favorites.html">Favorite</a>
+            <a href="feed.html">Feed</a>
+            <a href="profileUser.html">Profile</a>
+        </div>
+    </nav>
+    <button type="submit" onclick="feed()">feed</button>
+    <form onsubmit="createCollection(event)">
+        <input type="text" name="collection"></input>
+        <button type="submit">collection</button>
+
+    </form>
+
+    <div id="search-form">
+        <input type="text" id="title" placeholder="Search by Title" />
+        <select id="dietaryPreferences">
+            <option value="">All</option>
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Vegan">Vegan</option>
+            <option value="Gluten-Free">Gluten-Free</option>
+        </select>
+        <select id="difficulty">
+            <option value="">All</option>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+        </select>
+        <input type="number" id="maxPrepTime" placeholder="Max Prep Time (minutes)" />
+        <button onclick="searchRecipes()">Search</button>
+        <button onclick="seefavorites()">seefavorites</button>
+    </div>
+
+    <div id="recipe-results"></div>
+    <div id="showRecipe"></div>
+   
+        
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="searchRecipies.js"></script>
+</html>
