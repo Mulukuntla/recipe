@@ -15,7 +15,7 @@ const searchRecipes = async () => {
             maxPrepTime:maxPrepTime,
         }
         const token=localStorage.getItem("token")
-        const response = await axios.post(`http://localhost:4008/recipe/searchRecipes`,obj,{headers :{"Authorization" :token}})
+        const response = await axios.post(`http://51.20.172.55:4088/recipe/searchRecipes`,obj,{headers :{"Authorization" :token}})
         console.log(response)
         const recipes = response.data.recipes;
 
@@ -52,7 +52,7 @@ const searchRecipes = async () => {
 async function showRecipe(recipeId){
     console.log(recipeId)
     const token=localStorage.getItem("token")
-    const response = await axios.get(`http://localhost:4008/recipe/getRecipes/${recipeId}`,{headers :{"Authorization" :token}});
+    const response = await axios.get(`http://51.20.172.55:4088/recipe/getRecipes/${recipeId}`,{headers :{"Authorization" :token}});
     console.log(response)
     recipename=response.data.recipe.title
     console.log(recipename)
@@ -105,7 +105,7 @@ async function favorite(recipeId){
     console.log(recipeId)
     const token=localStorage.getItem("token")
     
-    const response = await axios.get(`http://localhost:4008/favorite/favorites`,{headers :{"Authorization" :token}})
+    const response = await axios.get(`http://51.20.172.55:4088/favorite/favorites`,{headers :{"Authorization" :token}})
     console.log(response)
     const favorites=document.getElementById("favorites")
     console.log(favorites)
@@ -131,7 +131,7 @@ async function createCollection(event){
     const obj={
         collectionName:event.target.collection.value
     }
-    const response = await axios.post(`http://localhost:4008/favorite/collections`,obj,{headers :{"Authorization" :token}})
+    const response = await axios.post(`http://51.20.172.55:4088/favorite/collections`,obj,{headers :{"Authorization" :token}})
     console.log(response)
 }
 
@@ -145,7 +145,7 @@ async function addfavoritesrecipe(collectionId,recipeId){
     console.log(recipeId)
 
     const token=localStorage.getItem("token")
-    const response = await axios.get(`http://localhost:4008/favorite/collections/${collectionId}/${recipeId}`,{headers :{"Authorization" :token}})
+    const response = await axios.get(`http://51.20.172.55:4088/favorite/collections/${collectionId}/${recipeId}`,{headers :{"Authorization" :token}})
     console.log(response)
     logActivity(response.data.userId, 'recipe added to favorite', `Recipe titled "${recipename}" has been added`);
 
@@ -156,7 +156,7 @@ function seefavorites(){
 }
 async function addfavorite(recipeId){
     const token=localStorage.getItem("token")
-    const response = await axios.get(`http://localhost:4008/favorite/favorites/${recipeId}`,{headers :{"Authorization" :token}})
+    const response = await axios.get(`http://51.20.172.55:4088/favorite/favorites/${recipeId}`,{headers :{"Authorization" :token}})
     console.log(response)
     logActivity(response.data.favorite.userId, 'recipe added to favorite', `Recipe titled "${recipename}" has been added`);
 }
@@ -164,7 +164,7 @@ async function addfavorite(recipeId){
 async function fetchReviews(recipeId) {
     try {
         const token=localStorage.getItem("token")
-        const response = await axios.get(`http://localhost:4008/review/allReviews/${recipeId}`,{headers :{"Authorization" :token}})
+        const response = await axios.get(`http://51.20.172.55:4088/review/allReviews/${recipeId}`,{headers :{"Authorization" :token}})
         console.log(response)
         renderReviews(response.data);
     } catch (error) {
@@ -185,7 +185,7 @@ async function fetchReviews(recipeId) {
     }
     try {
         const token=localStorage.getItem("token")
-        const response = await axios.post(`http://localhost:4008/review/addReview/${recipeId}`,obj,{headers :{"Authorization" :token}})
+        const response = await axios.post(`http://51.20.172.55:4088/review/addReview/${recipeId}`,obj,{headers :{"Authorization" :token}})
         console.log(response)
         logActivity(response.data.reviews.userId, 'wrote a review', `Recipe titled "${recipename}" has been created.`);
       
@@ -219,7 +219,7 @@ async function fetchReviews(recipeId) {
   // Fetch reviews on page load
   async function toggleFollow(userId) {
     const token=localStorage.getItem("token")
-    const response = await axios.get(`http://localhost:4008/follow/follow/${userId}`,{headers :{"Authorization" :token}})
+    const response = await axios.get(`http://51.20.172.55:4088/follow/follow/${userId}`,{headers :{"Authorization" :token}})
     console.log(response)
     if (response.status === 200) {
       alert('Successfully followed!');
@@ -245,7 +245,7 @@ async function logActivity(userId, activityType, description) {
         activityType:activityType,
         description:description,
       }
-      const response = await axios.post(`http://localhost:4008/follow/activity`,obj,{headers :{"Authorization" :token}})
+      const response = await axios.post(`http://51.20.172.55:4088/follow/activity`,obj,{headers :{"Authorization" :token}})
       console.log(response)
      
   

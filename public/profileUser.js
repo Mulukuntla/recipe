@@ -4,14 +4,14 @@ names.textContent=localStorage.getItem("userName")
 async function fetchUserData() {
     try {
         const token=localStorage.getItem("token")
-        const responseUser = await axios.get(`http://localhost:4008/user/user`,{headers :{"Authorization" :token}});
+        const responseUser = await axios.get(`http://51.20.172.55:4088/user/user`,{headers :{"Authorization" :token}});
         console.log(responseUser)
         showUser(responseUser.data.user)
-        const response = await axios.get(`http://localhost:4008/recipe/getRecipes/follow/${userId}`,{headers :{"Authorization" :token}});
+        const response = await axios.get(`http://51.20.172.55:4088/recipe/getRecipes/follow/${userId}`,{headers :{"Authorization" :token}});
         console.log(response)
         const recipes = response.data.recipes;
         
-       const responses = await axios.get(`http://localhost:4008/favorite/allfavorites/follow/${userId}`,{headers :{"Authorization" :token}})
+       const responses = await axios.get(`http://51.20.172.55:4088/favorite/allfavorites/follow/${userId}`,{headers :{"Authorization" :token}})
        console.log(responses)
        const favorite = responses.data.favorites;
        const collections=responses.data.collections
@@ -160,7 +160,7 @@ async function updateProfile(event){
         country
     }
     const token=localStorage.getItem("token")
-    const responseUser = await axios.post(`http://localhost:4008/user/updatePreferences`,obj,{headers :{"Authorization" :token}});
+    const responseUser = await axios.post(`http://51.20.172.55:4088/user/updatePreferences`,obj,{headers :{"Authorization" :token}});
     console.log(responseUser)
     alert("updated")
 

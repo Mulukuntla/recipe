@@ -1,6 +1,6 @@
 async function user(){
   const token=localStorage.getItem("token")
-  const  responseUser = await axios.get(`http://localhost:4008/user/user`,{headers :{"Authorization" :token}});
+  const  responseUser = await axios.get(`http://51.20.172.55:4088/user/user`,{headers :{"Authorization" :token}});
   console.log(responseUser)
   if(responseUser.data.user.isnotApproved==true){
     alert("you are not a user.create new one")
@@ -50,7 +50,7 @@ document.getElementById('recipeForm').addEventListener('submit', async (e) => {
     if(a===true){
       console.log("Hi")
       const token=localStorage.getItem("token")
-      response = await axios.post(`http://localhost:4008/recipe/addRecipe/${userId.textContent}`, formData, {
+      response = await axios.post(`http://51.20.172.55:4088/recipe/addRecipe/${userId.textContent}`, formData, {
         headers: {
             "Authorization" :token,
             "Content-Type": "multipart/form-data",
@@ -61,7 +61,7 @@ document.getElementById('recipeForm').addEventListener('submit', async (e) => {
     else{
       const token=localStorage.getItem("token")
       console.log("Hi")
-      response = await axios.post(`http://localhost:4008/recipe/addRecipe`, formData, {
+      response = await axios.post(`http://51.20.172.55:4088/recipe/addRecipe`, formData, {
         headers: {
             "Authorization" :token,
             "Content-Type": "multipart/form-data",
@@ -84,7 +84,7 @@ document.getElementById('recipeForm').addEventListener('submit', async (e) => {
 // Fetch Recipes
 async function fetchRecipes(){
   try {
-    const response = await axios.get("http://localhost:4008/recipe/Recipe");
+    const response = await axios.get("http://51.20.172.55:4088/recipe/Recipe");
     const recipes = response.data;
     const recipesContainer = document.getElementById('recipes');
     recipesContainer.innerHTML = '';
@@ -115,7 +115,7 @@ async function fetchRecipes(){
     const submit=document.getElementById("userId")
     console.log(submit.textContent)
     const token=localStorage.getItem("token")
-    const response = await axios.get("http://localhost:4008/recipe/getRecipes",{headers :{"Authorization" :token}});
+    const response = await axios.get("http://51.20.172.55:4088/recipe/getRecipes",{headers :{"Authorization" :token}});
     console.log(response)
     localStorage.setItem("userId",response.data.id)
     localStorage.setItem("userName",response.data.userName)
@@ -142,7 +142,7 @@ async function fetchRecipes(){
   async function edit(recipeId){
     console.log("Hi")
     const token=localStorage.getItem("token")
-    const response = await axios.get(`http://localhost:4008/recipe/getRecipes/${recipeId}`,{headers :{"Authorization" :token}});
+    const response = await axios.get(`http://51.20.172.55:4088/recipe/getRecipes/${recipeId}`,{headers :{"Authorization" :token}});
     console.log(response)
     document.getElementById('title').value=response.data.recipe.title
     document.getElementById('ingredients').value=response.data.recipe.ingredients
@@ -184,7 +184,7 @@ async function fetchRecipes(){
   async function delet(recipeId){
     console.log("Hi")
     const token=localStorage.getItem("token")
-    const response = await axios.delete(`http://localhost:4008/recipe/deleteRecipe/${recipeId}`,{headers :{"Authorization" :token}});
+    const response = await axios.delete(`http://51.20.172.55:4088/recipe/deleteRecipe/${recipeId}`,{headers :{"Authorization" :token}});
     console.log(response)
     getRecipies()
     
@@ -203,7 +203,7 @@ async function logActivity(userId, activityType, description) {
       activityType:activityType,
       description:description,
     }
-    const response = await axios.post(`http://localhost:4008/follow/activity`,obj,{headers :{"Authorization" :token}})
+    const response = await axios.post(`http://51.20.172.55:4088/follow/activity`,obj,{headers :{"Authorization" :token}})
     console.log(response)
    
 
@@ -216,7 +216,7 @@ async function logActivity(userId, activityType, description) {
 async function deletePic(recipeId){
   console.log(recipeId)
   const token=localStorage.getItem("token")
-  const response = await axios.delete(`http://localhost:4008/recipe/recipes/pic/${recipeId}`,{headers :{"Authorization" :token}})
+  const response = await axios.delete(`http://51.20.172.55:4088/recipe/recipes/pic/${recipeId}`,{headers :{"Authorization" :token}})
   console.log(response)
 
 }

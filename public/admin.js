@@ -1,7 +1,7 @@
 var imageUrl;
 async function loadUsers() {
     const token=localStorage.getItem("token")
-    const response = await axios.get('http://localhost:4008/admin/users',{headers :{"Authorization" :token}});
+    const response = await axios.get('http://51.20.172.55:4088/admin/users',{headers :{"Authorization" :token}});
     console.log(response)
     const users = response.data.users;
 
@@ -21,14 +21,14 @@ async function loadUsers() {
 
 async function approveUser(userId) {
     const token=localStorage.getItem("token")
-    const response=await axios.get(`http://localhost:4008/admin/users/approve/${userId}`,{headers :{"Authorization" :token}});
+    const response=await axios.get(`http://51.20.172.55:4088/admin/users/approve/${userId}`,{headers :{"Authorization" :token}});
     console.log(response)
     loadUsers();
 }
 
 async function notApproveUser(userId) {
     const token=localStorage.getItem("token")
-    const response=await axios.get(`http://localhost:4008/admin/users/notApprove/${userId}`,{headers :{"Authorization" :token}});
+    const response=await axios.get(`http://51.20.172.55:4088/admin/users/notApprove/${userId}`,{headers :{"Authorization" :token}});
     console.log(response)
     loadUsers();
 }
@@ -36,7 +36,7 @@ async function notApproveUser(userId) {
 loadUsers();
 async function loadRecipes() {
     const token=localStorage.getItem("token")
-    const response = await axios.get('http://localhost:4008/admin/recipes',{headers :{"Authorization" :token}});
+    const response = await axios.get('http://51.20.172.55:4088/admin/recipes',{headers :{"Authorization" :token}});
     console.log(response)
     const recipes = response.data.recipe;
 
@@ -58,7 +58,7 @@ async function loadRecipes() {
 async function deleteRecipe(recipeId) {
     console.log("Hi")
     const token=localStorage.getItem("token")
-    const response = await axios.delete(`http://localhost:4008/recipe/deleteRecipe/${recipeId}`,{headers :{"Authorization" :token}});
+    const response = await axios.delete(`http://51.20.172.55:4088/recipe/deleteRecipe/${recipeId}`,{headers :{"Authorization" :token}});
     console.log(response)
     loadRecipes();
 }
@@ -68,7 +68,7 @@ loadRecipes();
 async function showRecipe(recipeId){
     console.log(recipeId)
     const token=localStorage.getItem("token")
-    const response = await axios.get(`http://localhost:4008/recipe/getRecipes/${recipeId}`,{headers :{"Authorization" :token}});
+    const response = await axios.get(`http://51.20.172.55:4088/recipe/getRecipes/${recipeId}`,{headers :{"Authorization" :token}});
     console.log(response)
     recipename=response.data.recipe.title
     console.log(recipename)
@@ -138,7 +138,7 @@ async function edit(recipeId){
     <button type="submit" onclick="deletePic(${recipeId})">delete pic</button><br><br>`
     showRecipe.innerHTML=showRecipe.innerHTML+b
     const token=localStorage.getItem("token")
-    const response = await axios.get(`http://localhost:4008/recipe/getRecipes/${recipeId}`,{headers :{"Authorization" :token}});
+    const response = await axios.get(`http://51.20.172.55:4088/recipe/getRecipes/${recipeId}`,{headers :{"Authorization" :token}});
     console.log(response)
     document.getElementById('title').value=response.data.recipe.title
     document.getElementById('ingredients').value=response.data.recipe.ingredients
@@ -169,7 +169,7 @@ async function edit(recipeId){
           let response;
           
             const token=localStorage.getItem("token")
-            response = await axios.post(`http://localhost:4008/recipe/addRecipe/${recipeId}`, formData, {
+            response = await axios.post(`http://51.20.172.55:4088/recipe/addRecipe/${recipeId}`, formData, {
               headers: {
                   "Authorization" :token,
                   "Content-Type": "multipart/form-data",
@@ -189,6 +189,6 @@ async function edit(recipeId){
 async function deletePic(recipeId){
     const token=localStorage.getItem("token")
     console.log(recipeId)
-    const response = await axios.delete(`http://localhost:4008/admin/recipes/pic/${recipeId}`,{headers :{"Authorization" :token}});
+    const response = await axios.delete(`http://51.20.172.55:4088/admin/recipes/pic/${recipeId}`,{headers :{"Authorization" :token}});
     console.log(response)
 }

@@ -6,7 +6,7 @@ async function fetchFavoritesAndCollections() {
   try {
     const token=localStorage.getItem("token")
     
-    const response = await axios.get(`http://localhost:4008/favorite/allfavorites`,{headers :{"Authorization" :token}})
+    const response = await axios.get(`http://51.20.172.55:4088/favorite/allfavorites`,{headers :{"Authorization" :token}})
     console.log(response)
 
   

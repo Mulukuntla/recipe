@@ -6,7 +6,7 @@ const uploadToS3=(data,filename)=>{
     const IAM_USER_SECRET=process.env.IAM_USER_SECRET;
   
     let s3bucket= new AWS.S3({
-      accessKeyId : IAM_USER_KEY,
+      accessKeyId : IAM_USER_KEY, 
       secretAccessKey:IAM_USER_SECRET,
       
     })

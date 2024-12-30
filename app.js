@@ -36,7 +36,6 @@ var cors=require("cors")
 const app = express();
 const dotenv = require('dotenv');
 
-// get config vars
 dotenv.config();
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -55,7 +54,7 @@ collectionTable.belongsTo(userTable, { foreignKey: "userId" });
 
 collectionTable.belongsToMany(recipeTable, { through: collectionRecipeTable, foreignKey: "collectionId" });
 recipeTable.belongsToMany(collectionTable, { through: collectionRecipeTable, foreignKey: "recipeId" });
-userTable.hasMany(recipeTable,{ foreignKey: "userId" }); // User has many Posts
+userTable.hasMany(recipeTable,{ foreignKey: "userId" });
 recipeTable.belongsTo(userTable,{ foreignKey: "userId" }); 
 userTable.hasMany(reviewsTable, { foreignKey: "userId" });
 reviewsTable.belongsTo(userTable, { foreignKey: "userId" });
@@ -85,7 +84,7 @@ reviewsTable.belongsTo(recipeTable, { foreignKey: "recipeId" });
 follow.belongsTo(userTable, { foreignKey: 'followerId', as: 'follower' });
 follow.belongsTo(userTable, { foreignKey: 'followedId', as: 'followed' });
 
-// A user can have many activities (one-to-many relationship)
+
 userTable.hasMany(activity, { foreignKey: 'userId' });
 activity.belongsTo(userTable, { foreignKey: 'userId' });
 
@@ -135,7 +134,7 @@ app.use("/follow",follows)
 app.use("/admin",admin)
 
 
- // Add a userId field in the Salon table
+ 
 
 
 
@@ -151,23 +150,9 @@ app.use("/admin",admin)
 
 
 
-app.get('/search', (req, res) => {
-  const query = req.query.query;
-  const page = req.query.page;
-  console.log(query)
-  console.log(page)
-  // Process the search logic here
-  res.send(`Search query: ${query}, Page: ${page}`);
-});
 
 
 
-//cron.schedule("* * * * *", async () => {
-//  console.log("Starting cron job to archive old messages...");
-// await archieveMessages.archieveMessages();}, {
-//  scheduled: true,
-  
-//});
 
 
 
@@ -175,7 +160,7 @@ sequelize
 .sync()
 .then(result =>{
   console.log(result)
-  const PORT = process.env.PORT || 4008; // Change to a different port
+  const PORT = process.env.PORT || 4008; 
   app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

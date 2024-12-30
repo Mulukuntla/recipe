@@ -1,7 +1,7 @@
 async function loadActivityFeed() {
     try {
       const token=localStorage.getItem("token")
-      const response = await axios.get(`http://localhost:4008/follow/feed`,{headers :{"Authorization" :token}})
+      const response = await axios.get(`http://51.20.172.55:4088/follow/feed`,{headers :{"Authorization" :token}})
         console.log(response)
   
       const activities = response.data;  // Axios stores the response data in response.data

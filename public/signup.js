@@ -12,7 +12,7 @@ async function signup(event){
       
     }
     console.log(obj)
-    const response=await axios.post("http://localhost:4008/user/signup",obj)
+    const response=await axios.post("http://51.20.172.55:4088/user/signup",obj)
     console.log("created")
     console.log(response.data)
     window.location.href = "./signin.html";
@@ -37,7 +37,7 @@ async function signupAdmin(event){
       admin:admin
     }
     console.log(obj)
-    const response=await axios.post("http://localhost:4008/user/signup",obj)
+    const response=await axios.post("http://51.20.172.55:4088/user/signup",obj)
     console.log("created")
     console.log(response.data)
     window.location.href = "./signin.html";
